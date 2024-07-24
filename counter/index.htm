@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+    <style>.main {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .counter {
+        width: 100px;
+        height: 100px;
+        background: rgb(25, 0, 255);
+        border-radius: 50%;
+        border: 2px solid rgb(96, 231, 255);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-weight: bold;
+        font-size: 20px;
+        font-family: verdana;
+        float: left;
+        margin: 30px;
+        text-shadow: 1px 1px black;
+        box-shadow: 0px 0px 72px -9px rgba(26, 53, 255, 0.75);
+    }
+    
+    #counter{
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e6e6e7;
+  padding: 40px 0px;
+  width: 100%;
+}
+#counter .item{
+  background: #fff;
+  width: 200px;
+  padding: 35px 40px;
+  margin: 10px;
+  text-align: center;
+  border-radius: 20px;
+  -webkit-box-shadow: 0px 0px 38px -8px rgba(0,0,0,0.34);
+-moz-box-shadow: 0px 0px 38px -8px rgba(0,0,0,0.34);
+box-shadow: 0px 0px 38px -8px rgba(0,0,0,0.34);
+} 
+#counter .item .count{
+  color: #e8b12d;
+  margin-bottom: 5px;
+  font-size: 40px;
+}
+#counter .item h3{
+  color: #4f4e28;
+  text-transform: capitalize;
+}</style>
+</head>
+<body>
+    <div class="main">
+        <div class="counter" data-speed="1000">400</div>
+        <div class="counter" data-speed="1000">300</div>
+        <div class="counter" data-speed="1000">200</div>
+        <div class="counter" data-speed="1000">100</div>
+    </div>
+
+
+    <div id="counter">
+
+        <div class="item">
+           <h1 class="count" data-number="50" ></h1>
+           <h3 class="text">Reward</h3>
+        </div>
+        <div class="item">
+           <h1 class="count" data-number="15000" ></h1>
+           <h3 class="text">year+ Eexperience</h3>
+        </div>
+        <div class="item">
+           <h1 class="count" data-number="2040" ></h1>
+           <h3 class="text">project completed</h3>
+        </div>
+        <div class="item">
+           <h1 class="count" data-number="1018" ></h1>
+           <h3 class="text">happy clients</h3>
+        </div>
+      
+      </div>
+
+
+    <script>
+        (() => {
+    const counter = document.querySelectorAll('.counter');
+    // covert to array
+    const array = Array.from(counter);
+    // select array element
+    array.map((item) => {
+        // data layer
+        let counterInnerText = item.textContent;
+
+        let count = 1;
+        let speed = item.dataset.speed / counterInnerText
+        function counterUp() {
+            item.textContent = count++
+            if (counterInnerText < count) {
+                clearInterval(stop);
+            }
+        }
+        const stop = setInterval(() => {
+            counterUp();
+        }, speed);
+    })
+})()
+
+
+let count = document.querySelectorAll(".count")
+let arr = Array.from(count)
+
+
+
+arr.map(function(item){
+  let startnumber = 0
+
+  function counterup(){
+  startnumber++
+  item.innerHTML= startnumber
+   
+  if(startnumber == item.dataset.number){
+      clearInterval(stop)
+  }
+}
+
+let stop =setInterval(function(){
+  counterup()
+},50)
+
+})
+
+
+
+    </script>
+</body>
+</html>
